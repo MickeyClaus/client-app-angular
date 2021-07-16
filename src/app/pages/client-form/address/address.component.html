@@ -1,0 +1,54 @@
+<p class="subtitle center mt-3">Address Info</p>
+
+
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <div class="box animated animatedFadeInUp fadeInUp">
+        <div class="col">
+            <div class="form-group mt-2">
+                <label>Index</label>
+                <input formControlName="index" class="default--input w-85" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label>Region</label>
+                <input formControlName="region" class="default--input w-85" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label>Street</label>
+                <input formControlName="street" class="default--input w-85" type="text" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label [ngClass]="{'error': submitted && myForm.country.errors}">Country<span
+                        class="required-color">*</span></label>
+                <mat-select class="default--input" formControlName="country"  (change)="changeCountry($event)" (selectionChange)="getCities($event)">
+                    <mat-option *ngFor="let country of countryList" [value]="country">{{country.name}}</mat-option>
+                </mat-select>
+                <div class="invalid-feedback" *ngIf="submitted && myForm.country.errors?.required">
+                    Enter country
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label [ngClass]="{'error': submitted && myForm.city.errors}">City<span
+                        class="required-color">*</span></label>
+                <mat-select class="default--input" formControlName="city"  (change)="changeCity($event)">
+                    <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
+                </mat-select>
+                <div class="invalid-feedback" *ngIf="submitted && myForm.city.errors?.required">
+                    Enter city
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label>Home</label>
+                <input formControlName="home" class="default--input w-85" type="text" />
+            </div>
+        </div>
+    </div>
+    <div class="btn-box mt-3 flex-fe-c">
+        <button class="filled-btn mr-2 p-2">
+            <span>Save</span>
+        </button>
+    </div>
+
+
+</form>

@@ -1,0 +1,16 @@
+<mat-select class="default--input" [attr.name]="name" [id]="name" [disabled]="disabled"  [(ngModel)]="_value"
+  (ngModelChange)="onSelectChange()" (click)="clearSearchState()" [multiple]="isMultiple" 
+  (isDisabled)="disabled = $event">
+  <div class="form-control">
+    <input placeholder="Type to filter"  isPlaceholder class="default--input" (keyup)="filter()"
+      [(ngModel)]="keyword" (keydown)="$event.stopPropagation()" autocomplete="off" />
+    <mat-icon>search </mat-icon>
+  </div>
+  <mat-option [value]="item.id" *ngFor="let item of itemsFiltered">{{
+    item.name
+  }}</mat-option>
+
+  <ng-container *ngIf="!itemsFiltered.length">
+    <mat-option disabled>No Data</mat-option>
+  </ng-container>
+</mat-select>

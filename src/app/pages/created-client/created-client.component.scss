@@ -1,0 +1,23 @@
+.active{
+    font-weight: bold;
+    color: #003d71;
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.col{
+    width: 30%;
+    
+}
+
+@media only screen and (max-width: 900px) {
+    .box{
+        display: block;
+    }
+    .col {
+      width: 100%;
+    }
+  }

@@ -1,0 +1,23 @@
+.mat-input-element {
+  border: 1px solid #cfcfcf;
+  padding: 8px;
+  width: 100%;
+  padding-right: 30px;
+}
+
+mat-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 5px;
+  color: #000;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: default;
+}
+
+.form-control {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 3;
+}

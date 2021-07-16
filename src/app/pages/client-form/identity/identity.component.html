@@ -1,0 +1,69 @@
+<p class="subtitle center mt-3">Identity Info</p>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="box animated animatedFadeInUp fadeInUp">
+        <div class="col">
+            <div class="form-group mt-2">
+                <label [ngClass]="{'error': submitted && myForm.docType.errors}">Document Type<span
+                        class="required-color">*</span></label>
+                <mat-select class="default--input" formControlName="docType" (change)="changedocType($event)">
+                    <mat-option *ngFor="let doc of docTypeList" [value]="doc">{{doc}}</mat-option>
+                </mat-select>
+                <div class="invalid-feedback" *ngIf="submitted && myForm.docType.errors?.required">
+                    Enter document Type
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label [ngClass]="{'error': submitted && myForm.number.errors}">Number <span
+                        class="required-color">*</span></label>
+                <input formControlName="number" [ngClass]="{'error': submitted && myForm.number.errors}"
+                    class="default--input w-85" type="text" />
+                <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.maxLength">
+                    Number must be 8 digit long
+                </div>
+                <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.required">
+                    Please enter your number
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label [ngClass]="{'error': submitted && myForm.date.errors}">Date<span
+                        class="required-color">*</span></label>
+                <div class="default--input flex-sb-c">
+                    <input style="width: 100%;" class="dt disabled-input" [matDatepicker]="datepickerB" type="text" formControlName="date"
+                        [ngClass]="{'error': submitted && myForm.date.errors}" />
+                    <mat-datepicker-toggle matSuffix class="cal-button datepicker" [for]="datepickerB">
+                    </mat-datepicker-toggle>
+                </div>
+                <mat-datepicker #datepickerB></mat-datepicker>
+                <div class="invalid-feedback" *ngIf="submitted && myForm.date.errors?.required">
+                    Enter date
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label>Series</label>
+                <input formControlName="series" class="default--input w-85" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label>Issued by</label>
+                <input formControlName="issued" class="default--input w-85" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label>File</label>
+                <div>
+                    <input type='file'  accept=".png, .jpg, .jpeg" #fileInput
+                        (change)="uploadFile($event)" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="btn-box mt-3 flex-fe-c">
+        <button class="filled-btn mr-2 p-2">
+            <span>Save</span>
+        </button>
+    </div>
+
+
+</form>

@@ -1,0 +1,10 @@
+<div class="confirm">
+  <p class="head text" *ngIf="text" localization>{{text}}</p>
+  <p class="head p-3" localization>Are you Sure?</p>
+  <div class="confirm--buttons pb-3">
+    <button class="btn btn-yes" (click)="confirm()">
+      <span localization>Yes</span>
+    </button>
+    <button class="btn btn-no"><span localization>No</span></button>
+  </div>
+</div>
