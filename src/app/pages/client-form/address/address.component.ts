@@ -39,9 +39,7 @@ export class AddressComponent implements OnInit {
     })
   }
 
-  getCities(e){
-    console.log(e);
-    
+  getCities(e){    
     this.countryList.forEach(element => {
       if(e.value.id == element.id){
         this.cities = element.cities
@@ -64,7 +62,6 @@ export class AddressComponent implements OnInit {
 
       this.localStorage.store('address', this.addressForm.value);
       this.router.navigate([`/client-form/identity`]);
-      console.log(this.addressForm.value)
     }
   }
 

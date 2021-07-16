@@ -71,7 +71,6 @@ export class IdentityComponent implements OnInit {
       this.localStorage.store('identity', this.registrationForm.value);
       this.notifyService.showSuccess("Kлиент успешно создан", "")
       this.router.navigate([`/created-client`, 0]);
-      console.log(this.registrationForm.value)
     }
   }
 
